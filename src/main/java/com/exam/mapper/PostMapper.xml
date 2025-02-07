@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.PostMapper">
+	
+	<!-- 포스트글 저장하기 -->
+	<insert id="postAdd" parameterType="PostDTO"> 
+	 insert into study_posts (title, description,category)
+	 values ( #{title}, #{description}, #{category}) 
+	</insert>
+
+	<!-- 전체 포스트 글 가져오기 -->
+    <select id="findAll" resultType="PostDTO"> 
+		select * from study_posts 
+	</select>
+	
+	<!-- 특정 카데고리별로 가져오기 -->
+	<select id="findByCategory" resultType="PostDTO" parameterType="string"> 
+    select * from study_posts 
+    where trim(category) = #{category}
+	</select>
+	
+</mapper>
