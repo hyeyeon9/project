@@ -12,4 +12,7 @@ public interface PostMapper {
 	public int postAdd(PostDTO dto);
 	public List<PostDTO> findAll();
 	public List<PostDTO> findByCategory(String category);
+	public int PostDelete(int studyid);
+	public int PostUpdate(PostDTO dto);
+	public PostDTO findById(int studyid);
 }

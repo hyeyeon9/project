@@ -35,6 +35,21 @@ public class PostServiceImpl implements PostService {
 		return mapper.findByCategory(category);
 	}
 
+	@Override
+	public int PostDelete(int studyid) {
+		return mapper.PostDelete(studyid);
+	}
+
+	@Override
+	public int PostUpdate(PostDTO dto) {
+		return mapper.PostUpdate(dto);
+	}
+
+	@Override
+	public PostDTO findById(int studyid) {
+		return mapper.findById(studyid);
+	}
+
 
 
 }

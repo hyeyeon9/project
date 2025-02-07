@@ -66,6 +66,8 @@
 	 	<jsp:include page="page/home.jsp" />
 	 	
 	     <div><a href="post">글 작성하기</a></div>
+	     
+	     <!-- 작성된 게시물 목록 -->
 	     <jsp:include page="study/studyPostList.jsp" flush="true" /> 
 	   </div>
 </body>

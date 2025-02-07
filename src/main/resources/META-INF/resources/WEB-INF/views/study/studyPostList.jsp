@@ -32,15 +32,15 @@
    
    <!-- 카테고리별 필터된 posts 보여주기 -->
     <c:forEach var="post" items="${posts }">
-                       
-<div>
+ <a href="postRetrieve?studyid=${post.studyid }">                      
+	<div>
        <div> 글 번호: ${post.studyid }</div>
-       <div>제목: ${post.title }</div>
+       <div> 제목: ${post.title }</div>
        <div> 카테고리 : ${post.category}</div>
-       <div>내용: : ${post.description }</div>
+       <div> 내용: ${post.description }</div>
 
 </div>
-     
+ </a>    
    </c:forEach>  
 </div>
 
