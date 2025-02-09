@@ -54,6 +54,7 @@ public class PostController {
 		post.setCategory(category);
 		post.setUserid(userid); // 사용자 아이디 저장하기
 		
+		
 		int n = service.postAdd(post);
 		return "redirect:home";
 	}
@@ -84,10 +85,12 @@ public class PostController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    MemberDTO dto = (MemberDTO) auth.getPrincipal();
 	    String loginUserId = dto.getUserid(); // 현재 로그인한 사용자 아이디 가져오기
+	    String loginUserName = dto.getUsername();
 	    
 		 PostDTO post  = service.findById(studyid);
 		 m.addAttribute("post",post );
 		 m.addAttribute("loginUserId", loginUserId);
+		 m.addAttribute("loginUserName", loginUserName);
 		 
 		return "postRetrieve";
 	}

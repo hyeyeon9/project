@@ -28,5 +28,5 @@
     
         <div class="content">${post.description}</div>
 
-
+		
 
