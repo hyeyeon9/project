@@ -36,9 +36,9 @@ public class CommentsController {
 		String userid = memberDTO.getUserid();
 		
 		CommentsDTO dto = new CommentsDTO();
-		dto.setStudy_id(studyid);
+		dto.setStudyid(studyid);
 		dto.setComments(comments);
-		dto.setUser_id(userid);
+		dto.setUserid(userid);
 		
 		service.CommentsAdd(dto);
 		

@@ -10,16 +10,12 @@ $(document).ready(function(){
 		$("#comments").val("");
 	
 	})
-	
-	
-	
-	
+		
 	
 })
 </script>
     
 		<h1>댓글 개수 : </h1>
-		${post}
    		<form class="commentsForm" action="CommentsAdd" method="post">
    			<input type="hidden" value="${post.studyid }" name ="studyid"/>
    			<input type="text" name="comments" id="comments" placeholder="${loginUserName}님, 댓글을 작성해보세요. " />

@@ -4,7 +4,7 @@
 	
 	<!-- 포스트글 저장하기 -->
 	<insert id="postAdd" parameterType="PostDTO"> 
-	 insert into study_posts (title, description,category, user_id)
+	 insert into study_posts (title, description,category, userid)
 	 values ( #{title}, #{description}, #{category}, #{userid}) 
 	</insert>
 
@@ -34,9 +34,9 @@
 	
 	<!-- id로 포스트 찾기 -->
 <select id="findById" resultType="PostDTO" parameterType="int">
-    SELECT p.studyid, p.title, p.description, p.category, p.user_id, m.username
+    SELECT p.studyid, p.title, p.description, p.category, p.userid, m.username
     FROM study_posts p
-    JOIN member m ON p.user_id = m.userid
+    JOIN member m ON p.userid = m.userid
     WHERE p.studyid = #{studyid}
 </select>
 	

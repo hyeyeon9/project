@@ -3,9 +3,8 @@
 <mapper namespace="com.exam.mapper.CommentsMapper">
 	
 	<insert id="CommentsAdd" parameterType="CommentsDTO">
-		insert into study_comments (comments, study_id, user_id)
-		values ( #{comments}, #{study_id}, #{user_id}) 
-	
+		insert into study_comments (comments, studyid, userid )
+		values ( #{comments}, #{studyid}, #{userid}) 
 	</insert>
 	
 	<!-- 
@@ -15,8 +14,9 @@
 	</insert>
 	 -->
 	
-	<select id="findAll" resultType="CommentsDTO"> 
-	select * from study_posts 
+	<select id="findAll" resultType="CommentsDTO" parameterType="int"> 
+	 select * from study_comments
+	 where studyid = #{studyid}
 	</select>
 	
 	

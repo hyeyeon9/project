@@ -10,7 +10,7 @@
                 <div class="profile-icon">${post.username.substring(0,1)}</div>
                 <div>
                     <div class="author">${post.username}</div>
-                    <div class="timestamp">2025. 2. 7. 오후 11:18:43</div> <!-- 날짜는 동적으로 변경 가능 -->
+                    <div class="timestamp">${post.created_at }</div> <!-- 날짜는 동적으로 변경 가능 -->
                 </div>
             </div>
             <c:if test="${loginUserId eq post.userid}">

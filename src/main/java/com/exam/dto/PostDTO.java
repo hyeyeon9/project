@@ -1,5 +1,7 @@
 package com.exam.dto;
 
+import java.sql.Timestamp;
+
 import org.apache.ibatis.type.Alias;
 
 import jakarta.validation.constraints.NotBlank;
@@ -11,16 +13,17 @@ public class PostDTO {
 	String title;
 	String description;
 	String category;
-	private String userid; // 추가: 작성자 ID 저장
-	private String username; // 👈 닉네임
-	
+	String userid; // 추가: 작성자 ID 저장
+	String username; // 👈 닉네임
+	Timestamp created_at;
 	
 	public PostDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PostDTO(int studyid, String title, String description, String category, String userid, String username) {
+	public PostDTO(int studyid, String title, String description, String category, String userid, String username,
+			Timestamp created_at) {
 		super();
 		this.studyid = studyid;
 		this.title = title;
@@ -28,6 +31,7 @@ public class PostDTO {
 		this.category = category;
 		this.userid = userid;
 		this.username = username;
+		this.created_at = created_at;
 	}
 
 	public int getStudyid() {
@@ -78,12 +82,20 @@ public class PostDTO {
 		this.username = username;
 	}
 
+	public Timestamp getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Timestamp created_at) {
+		this.created_at = created_at;
+	}
+
 	@Override
 	public String toString() {
 		return "PostDTO [studyid=" + studyid + ", title=" + title + ", description=" + description + ", category="
-				+ category + ", userid=" + userid + ", username=" + username + "]";
+				+ category + ", userid=" + userid + ", username=" + username + ", created_at=" + created_at + "]";
 	}
+
 	
-	
-	
+
 }
