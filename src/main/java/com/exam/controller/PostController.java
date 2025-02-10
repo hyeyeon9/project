@@ -17,9 +17,8 @@ import com.exam.dto.PostDTO;
 import com.exam.service.PostService;
 
 import jakarta.servlet.http.HttpSession;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @Controller
 public class PostController {
 
