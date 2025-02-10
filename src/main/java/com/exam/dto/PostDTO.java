@@ -15,7 +15,7 @@ public class PostDTO {
 	String category;
 	String userid; // 추가: 작성자 ID 저장
 	String username; // 👈 닉네임
-	Timestamp created_at;
+	Timestamp createdAt;
 	
 	public PostDTO() {
 		super();
@@ -23,7 +23,7 @@ public class PostDTO {
 	}
 
 	public PostDTO(int studyid, String title, String description, String category, String userid, String username,
-			Timestamp created_at) {
+			Timestamp createdAt) {
 		super();
 		this.studyid = studyid;
 		this.title = title;
@@ -31,7 +31,7 @@ public class PostDTO {
 		this.category = category;
 		this.userid = userid;
 		this.username = username;
-		this.created_at = created_at;
+		this.createdAt = createdAt;
 	}
 
 	public int getStudyid() {
@@ -82,20 +82,19 @@ public class PostDTO {
 		this.username = username;
 	}
 
-	public Timestamp getCreated_at() {
-		return created_at;
+	public Timestamp getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	@Override
 	public String toString() {
 		return "PostDTO [studyid=" + studyid + ", title=" + title + ", description=" + description + ", category="
-				+ category + ", userid=" + userid + ", username=" + username + ", created_at=" + created_at + "]";
+				+ category + ", userid=" + userid + ", username=" + username + ", createdAt=" + createdAt + "]";
 	}
-
 	
-
+	
 }

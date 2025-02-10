@@ -10,12 +10,14 @@
 
 	<!-- 전체 포스트 글 가져오기 -->
     <select id="findAll" resultType="PostDTO"> 
-		select * from study_posts 
+		select studyid,title,description,category,userid,created_at
+		from study_posts 
 	</select>
 	
 	<!-- 특정 카데고리별로 가져오기 -->
 	<select id="findByCategory" resultType="PostDTO" parameterType="string"> 
-    select * from study_posts 
+    select studyid,title,description,category,userid,created_at
+    from study_posts 
     where trim(category) = #{category}
 	</select>
 	
@@ -34,7 +36,7 @@
 	
 	<!-- id로 포스트 찾기 -->
 <select id="findById" resultType="PostDTO" parameterType="int">
-    SELECT p.studyid, p.title, p.description, p.category, p.userid, m.username
+    SELECT p.studyid, p.title, p.description, p.category, p.userid,p.created_at, m.username
     FROM study_posts p
     JOIN member m ON p.userid = m.userid
     WHERE p.studyid = #{studyid}

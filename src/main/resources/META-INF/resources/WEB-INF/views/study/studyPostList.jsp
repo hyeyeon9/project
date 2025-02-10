@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 	.home-contentsBox{
 		padding : 40px 70px;
+		background-color: #f5f6fa;
 	}
 	
 	#post-title{
@@ -37,7 +39,55 @@
 		background-color: #e0e0e0;
 	}
 	
+	.posts-box{
+		border : 2px tomato solid;
+		display : flex;
+		flex-direction:column;
+		gap : 10px;
+	}
 	
+	.posts-content-box{
+		border : 2px green solid;	
+		padding : 10px;
+		border-radius:15px;
+		backround-color:white;
+		display:flex;
+		flex-direction:column;
+		gap: 10px;
+	}
+	
+	#post-profile{
+		display:flex;
+		gap:7px;
+	    font-size:15px;
+		font-weight:500;
+	}
+	
+	#contents{
+		display:flex;
+		flex-direction:column;
+		gap:10px;
+	}
+	
+	#contents-title{
+	    font-size:20px;
+		font-weight:700;
+	}
+	
+	#contents-des{
+	 	font-size:15px;
+		font-weight:500;
+	
+	}
+	
+	#post-category{
+		background-color: #e0e0e0;
+		border-radius: 10px; 
+		font-size:15px;
+		font-weight:700;
+		padding : 5px 10px;
+		  width: min-content;
+	}
 	
 
 </style>
@@ -63,16 +113,26 @@
   
   </nav>     
 
-   
+   ${posts }
 	<div class="posts-box">
 		   <!-- 카테고리별 필터된 posts 보여주기 -->
     	<c:forEach var="post" items="${posts }">
      		<a href="postRetrieve?studyid=${post.studyid }">                      
-				<div>
-      				 <div> 글 번호: ${post.studyid }</div>
-      				 <div> 제목: ${post.title }</div>
-      				 <div> 카테고리 : ${post.category}</div>
-       				<div> 내용: ${post.description }</div>
+				<div class="posts-content-box">
+      				 <div id="post-profile"> 
+      				 			<div id="name-box">
+      				 				${fn:substring(loginUserName, 0, 1) }
+      				 			</div>
+      				 
+      				 			 <div>${loginUserName }</div> 
+      				 			 <div>${post.createdAt }</div>
+      				 			 
+      				 			 </div>
+      				 <div id="contents">
+      					 <div id="contents-title">${post.title }</div>
+       				     <div id="contents-des">${post.description }</div>
+       				 </div>
+       				 <span id="post-category"> ${post.category}</span>
 
 				</div>
  			</a>    

@@ -117,7 +117,7 @@
                 <div class="profile-icon">${post.username.substring(0,1)}</div>
                 <div>
                     <div class="author">${post.username}</div>
-                    <div class="timestamp">${post.created_at }</div> <!-- 날짜는 동적으로 변경 가능 -->
+                    <div class="timestamp">${post.createdAt }</div> <!-- 날짜는 동적으로 변경 가능 -->
                 </div>
             </div>
             <c:if test="${loginUserId eq post.userid}">

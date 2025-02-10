@@ -61,12 +61,17 @@ public class PostController {
 	// 카테고리별 게시물 보기
 	@GetMapping("/posts")
 	public String findByCategory(@RequestParam(required = false) String category, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    MemberDTO dto = (MemberDTO) auth.getPrincipal();
+	    String loginUserName = dto.getUsername();
 	    
+		
 		System.out.println("검색 카테고리: " + category);
 		List<PostDTO> posts = service.findByCategory(category);
 	    System.out.println("null 아님" + posts);
 
 	    model.addAttribute("posts", posts);
+	    model.addAttribute("loginUserName", loginUserName);
 	    return "home"; // studyPosts.jsp로 데이터 전달
 	}
 	
