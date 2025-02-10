@@ -65,6 +65,7 @@ public class PostController {
 	    MemberDTO dto = (MemberDTO) auth.getPrincipal();
 	    String loginUserName = dto.getUsername();
 	    
+	    
 		
 		System.out.println("검색 카테고리: " + category);
 		List<PostDTO> posts = service.findByCategory(category);

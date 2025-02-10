@@ -4,13 +4,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
 	.Homecontainer{
-		border : 2px red solid;
 		display : flex;
 		height: 86vh;
-	}
-	
-	.home-contentsBox{
-		border : 2px blue solid;
 	}
 	
 	
@@ -18,20 +13,7 @@
 
 </style>
 	
-	
-<script>
-	
-	$(document).ready(function(){
-			// 메뉴 선택한 것만 색상 체인지
-			$(".home-nav-li").on("click", function(event){
-				$(".home-nav-li").removeClass("active"); // 모든 active 클래스 제거 후
-			    $(this).addClass("active"); // 선택한 li에 active 추가하기
-			});
-			
-			
-	})
 
-</script>
 
     <div class="Homecontainer">
 		

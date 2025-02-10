@@ -2,11 +2,10 @@
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
- <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
  <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
  <style>
- 	<style>
-
       
      <!-- 마이페이지 css -->
 	.MyPageBox {
@@ -69,23 +68,48 @@
       
       width:20%;
       }
-      
+     
+     
+     #name-box{
+		font-size:15px;
+		width:25px;
+		height:25px;
+		border-radius:50%;
+		color:white;
+		display:flex;
+		justify-content: center;
+        align-items: center;
+		
+	
+	} 
       
       /* 배치 */
       .Homecontainer{
 		border : 2px red solid;
 		display : flex;
+		height : 86vh;
 	}
 	
 	.home-contentsBox{
-		border : 2px blue solid;
+	border : 2px blue solid;
+	display : flex;
 	}
+	
+	.MyProfileContainer{
+	border : 2px yellow solid;
+	width : 50%;
+	}
+	
+	.myScrap-box{
+	border : 2px green solid;
+	width : 50%;
+	}
+	
 
     </style>
  
  
- 
- </style> 
+
   <div class="Homecontainer">
 		
  		 
@@ -100,7 +124,9 @@
 			
 			<div class="profile-content-box">
 				<div class="mainProfile">
-					<img alt="#"/>
+					<div id="name-box" style="background-color: ${mypage.bgColor}">
+      				 				${fn:substring(mypage.username, 0, 1) }
+      				 			</div>
 					<div>
 						${mypage.username}
 					</div>
@@ -123,6 +149,11 @@
 				</div>
 
 			 </div>
+  		</div>
+  		
+  		<div class="myScrap-box">
+  		<h1>내 스크랩</h1>
+  		
   		</div>
 		
    </div>

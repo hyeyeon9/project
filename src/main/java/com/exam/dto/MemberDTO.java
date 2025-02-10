@@ -9,15 +9,21 @@ public class MemberDTO {
 
 	String userid;
 	String passwd;
+	private String bgColor;
 	
 	@NotBlank(message = "username 필수")
 	String username;
 	
-	public MemberDTO() {}
+	public MemberDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	public MemberDTO(String userid, String passwd, String username) {
+	public MemberDTO(String userid, String passwd, String bgColor, @NotBlank(message = "username 필수") String username) {
+		super();
 		this.userid = userid;
 		this.passwd = passwd;
+		this.bgColor = bgColor;
 		this.username = username;
 	}
 
@@ -37,6 +43,14 @@ public class MemberDTO {
 		this.passwd = passwd;
 	}
 
+	public String getBgColor() {
+		return bgColor;
+	}
+
+	public void setBgColor(String bgColor) {
+		this.bgColor = bgColor;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -47,8 +61,11 @@ public class MemberDTO {
 
 	@Override
 	public String toString() {
-		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", username=" + username + "]";
+		return "MemberDTO [userid=" + userid + ", passwd=" + passwd + ", bgColor=" + bgColor + ", username=" + username
+				+ "]";
 	}
+	
+	
 	
 	
 }

@@ -2,6 +2,7 @@ package com.exam.controller;
 
 
 import java.lang.reflect.Member;
+import java.util.Random;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -67,7 +68,19 @@ public class MemberController {
 		
 		log.info("pw :{}", pw);
 		log.info("encodedPW :{}", encodedPW);
+		
+		String[] softColors = { "#FFB6C1", // Light Pink
+                "#FFDAB9", // Peach Puff
+                "#E6E6FA", // Lavender
+                "#F0E68C", // Khaki
+                "#98FB98", // Pale Green
+                "#AFEEEE", // Pale Turquoise
+                "#D3D3D3"};  // Light Gray
 
+		Random random = new Random();
+		String bgColor = softColors[random.nextInt(softColors.length)];
+		dto.setBgColor(bgColor);
+		
 		
 		// 암호화한 비밀번호로 다시 저장
 		dto.setPasswd(encodedPW);
