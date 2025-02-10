@@ -157,12 +157,12 @@
 				Timestamp createdAt = p.getCreatedAt();
 				String timeAgo = TimeUtil.getRelativeTime(createdAt);
 		%>
-    	
+   
     	
      		<a href="postRetrieve?studyid=${post.studyid }">                      
 				<div class="posts-content-box">
       				 <div id="post-profile"> 
-      				 			<div id="name-box">
+      				 			<div id="name-box"  style="background-color: ${mypage.bgColor}">
       				 				${fn:substring(loginUserName, 0, 1) }
       				 			</div>
       				 

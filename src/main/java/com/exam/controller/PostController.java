@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.exam.dto.MemberDTO;
 import com.exam.dto.PostDTO;
+import com.exam.service.AuthenticationService;
 import com.exam.service.PostService;
 
 import jakarta.servlet.http.HttpSession;
@@ -23,13 +24,15 @@ import jakarta.servlet.http.HttpSession;
 public class PostController {
 
 	PostService service;
+	AuthenticationService authService;
 	
-	public PostController(PostService service) {
+
+	public PostController(PostService service, AuthenticationService authService) {
 		super();
 		this.service = service;
+		this.authService = authService;
 	}
 
-	
 	// 게시물 작성 페이지로 가기
 	@GetMapping("/post")
 	public String post() {
@@ -64,8 +67,10 @@ public class PostController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    MemberDTO dto = (MemberDTO) auth.getPrincipal();
 	    String loginUserName = dto.getUsername();
+	    String userid = dto.getUserid();
 	    
-	    
+		MemberDTO db_dto = authService.findByUserid(userid);
+		model.addAttribute("mypage", db_dto);
 		
 		System.out.println("검색 카테고리: " + category);
 		List<PostDTO> posts = service.findByCategory(category);
@@ -91,6 +96,9 @@ public class PostController {
 	    MemberDTO dto = (MemberDTO) auth.getPrincipal();
 	    String loginUserId = dto.getUserid(); // 현재 로그인한 사용자 아이디 가져오기
 	    String loginUserName = dto.getUsername();
+	    
+		MemberDTO db_dto = authService.findByUserid(loginUserId);
+		m.addAttribute("mypage", db_dto);
 	    
 		 PostDTO post  = service.findById(studyid);
 		 m.addAttribute("post",post );

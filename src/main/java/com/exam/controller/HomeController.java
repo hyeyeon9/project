@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exam.dto.MemberDTO;
 import com.exam.dto.PostDTO;
+import com.exam.service.AuthenticationService;
 import com.exam.service.PostService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +21,12 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
 
 	PostService service;
+	AuthenticationService authService;
 	
-	public HomeController(PostService service) {
+	public HomeController(PostService service, AuthenticationService authService) {
 		super();
 		this.service = service;
+		this.authService = authService;
 	}
 
 
@@ -34,9 +37,13 @@ public class HomeController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    MemberDTO dto = (MemberDTO) auth.getPrincipal();
 	    String loginUserName = dto.getUsername();
+	    String userid = dto.getUserid();
+	    
+		MemberDTO db_dto = authService.findByUserid(userid);
+		m.addAttribute("mypage", db_dto);
 	    
 	    m.addAttribute("loginUserName", loginUserName);
-	    
+
 		List<PostDTO> list = service.findAll();
 		log.info("{}",list );
 		m.addAttribute("posts",list);

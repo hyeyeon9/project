@@ -41,7 +41,7 @@
         .profile-icon {
             width: 40px;
             height: 40px;
-            background-color: #3498db;
+          
             color: white;
             display: flex;
             align-items: center;
@@ -114,7 +114,7 @@
         <div class="RetrieveHeader">
   
             <div class="profile">
-                <div class="profile-icon">${post.username.substring(0,1)}</div>
+                <div class="profile-icon" style="background-color: ${mypage.bgColor}">${post.username.substring(0,1)}</div>
                 <div>
                     <div class="author">${post.username}</div>
                     <div class="timestamp">${post.createdAt }</div> <!-- 날짜는 동적으로 변경 가능 -->
