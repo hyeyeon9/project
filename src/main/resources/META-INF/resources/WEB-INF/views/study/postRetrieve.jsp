@@ -73,7 +73,10 @@
             color: #333;
             line-height: 1.6;
             margin-bottom: 20px;
+             white-space: pre-wrap;
         }
+        
+
 
         .actions {
             display: flex;
