@@ -202,6 +202,19 @@
    .save-btn:hover {
        background-color: #e43e3e;
    }
+   
+   	.text-area {
+            width: 90%;
+            height: 200px;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+            background-color: #f9f9f9;
+            resize: vertical;
+            white-space: pre-wrap;
+        }
 
 
     </style>

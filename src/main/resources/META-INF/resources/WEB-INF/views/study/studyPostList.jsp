@@ -123,6 +123,8 @@
 		
 	
 	}
+	
+
 
 </style>
 
@@ -159,8 +161,10 @@
 		%>
    
     	
-     		<a href="postRetrieve?studyid=${post.studyid }">                      
+     		<a href="postRetrieve?studyid=${post.studyid }" >                      
+				
 				<div class="posts-content-box">
+      				
       				 <div id="post-profile"> 
       				 			<div id="name-box"  style="background-color: ${mypage.bgColor}">
       				 				${fn:substring(loginUserName, 0, 1) }

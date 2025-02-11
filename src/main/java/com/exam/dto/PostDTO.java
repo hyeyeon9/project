@@ -16,6 +16,7 @@ public class PostDTO {
 	String userid; // 추가: 작성자 ID 저장
 	String username; // 👈 닉네임
 	Timestamp createdAt;
+	boolean isScrapped;  // ✅ 추가 (스크랩 여부)
 	
 	public PostDTO() {
 		super();
@@ -23,7 +24,7 @@ public class PostDTO {
 	}
 
 	public PostDTO(int studyid, String title, String description, String category, String userid, String username,
-			Timestamp createdAt) {
+			Timestamp createdAt, boolean isScrapped) {
 		super();
 		this.studyid = studyid;
 		this.title = title;
@@ -32,6 +33,7 @@ public class PostDTO {
 		this.userid = userid;
 		this.username = username;
 		this.createdAt = createdAt;
+		this.isScrapped = isScrapped;
 	}
 
 	public int getStudyid() {
@@ -90,10 +92,21 @@ public class PostDTO {
 		this.createdAt = createdAt;
 	}
 
+	public boolean isScrapped() {
+		return isScrapped;
+	}
+
+	public void setScrapped(boolean isScrapped) {
+		this.isScrapped = isScrapped;
+	}
+	
+	
+
 	@Override
 	public String toString() {
 		return "PostDTO [studyid=" + studyid + ", title=" + title + ", description=" + description + ", category="
-				+ category + ", userid=" + userid + ", username=" + username + ", createdAt=" + createdAt + "]";
+				+ category + ", userid=" + userid + ", username=" + username + ", createdAt=" + createdAt
+				+ ", isScrapped=" + isScrapped + "]";
 	}
 	
 	

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.ScrapMapper">
+	
+	 <!-- 사용자가 특정 게시물을 스크랩했는지 확인 -->
+	 <select id="isScrapped" resultType="boolean" parameterType="map">
+	 	
+	 	select count(*) > 0
+	 	from scrap 
+	 	where userid = #{userid} and studyid= #{studyid}
+
+	 </select>
+	 
+	 
+	 <!-- 스크랩 추가 -->
+	 <insert id="addScrap" parameterType="ScrapDTO">
+	 
+	 	insert into scrap (userid, studyid, created_at)
+	 	values (#{userid}, #{studyid}, NOW())
+	 
+	 </insert>
+	 
+	 
+	  <!-- 스크랩 삭제 -->
+	  <delete id="deleteScrap" parameterType="map">
+	  
+	  	delete from scrap
+	  	where userid = #{userid} AND studyid = #{studyid}
+	  
+	  </delete>
+	  
+	  <!-- 사용자가 스크랩한 데이터 조회 -->
+	    <select id="findScrappedStudyIds" parameterType="String" resultType="int">
+	    
+	    	select studyid
+	    	from scrap
+	    	where userid = #{userid}
+	    
+	    </select>
+
+	  
+</mapper>

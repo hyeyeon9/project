@@ -12,25 +12,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.exam.dto.CommentsDTO;
 import com.exam.dto.MemberDTO;
 import com.exam.dto.PostDTO;
 import com.exam.service.AuthenticationService;
+import com.exam.service.CommentsService;
 import com.exam.service.PostService;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Controller
 public class PostController {
 
 	PostService service;
 	AuthenticationService authService;
+	CommentsService commentsService;
 	
 
-	public PostController(PostService service, AuthenticationService authService) {
+
+
+	public PostController(PostService service, AuthenticationService authService, CommentsService commentsService) {
 		super();
 		this.service = service;
 		this.authService = authService;
+		this.commentsService = commentsService;
 	}
 
 	// 게시물 작성 페이지로 가기
@@ -100,10 +107,20 @@ public class PostController {
 		MemberDTO db_dto = authService.findByUserid(loginUserId);
 		m.addAttribute("mypage", db_dto);
 	    
-		 PostDTO post  = service.findById(studyid);
+		 PostDTO post = service.findPostWithScrapStatus(studyid, loginUserId);
+		 log.info(post.getCategory());
+		 
+		 
 		 m.addAttribute("post",post );
 		 m.addAttribute("loginUserId", loginUserId);
 		 m.addAttribute("loginUserName", loginUserName);
+		 
+		    // ======= 추가된 부분: 댓글 목록과 댓글 개수 조회 =======
+		    List<CommentsDTO> comments = commentsService.findAll(studyid);
+		    m.addAttribute("comments", comments);
+		    m.addAttribute("commentCount", comments.size());
+		    // ====================================================
+		 
 		 
 		return "postRetrieve";
 	}

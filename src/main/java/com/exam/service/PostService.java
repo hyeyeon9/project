@@ -12,4 +12,6 @@ public interface PostService {
 	public int PostDelete(int studyid);
 	public int PostUpdate(PostDTO dto);
 	public PostDTO findById(int studyid);
+	public PostDTO findPostWithScrapStatus(int studyid, String userid);
+	public List<PostDTO> findPostsByStudyIds(List<Integer> studyIds);
 }

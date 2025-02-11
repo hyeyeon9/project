@@ -8,10 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.exam.dto.CommentsDTO;
 import com.exam.dto.MemberDTO;
 import com.exam.dto.PostDTO;
 import com.exam.service.AuthenticationService;
+import com.exam.service.CommentsService;
 import com.exam.service.PostService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,11 +25,16 @@ public class HomeController {
 
 	PostService service;
 	AuthenticationService authService;
+	CommentsService commentsService;
 	
-	public HomeController(PostService service, AuthenticationService authService) {
+
+
+
+	public HomeController(PostService service, AuthenticationService authService, CommentsService commentsService) {
 		super();
 		this.service = service;
 		this.authService = authService;
+		this.commentsService = commentsService;
 	}
 
 
@@ -49,4 +57,7 @@ public class HomeController {
 		m.addAttribute("posts",list);
 		return "home";
 	}
+
+	
+
 }

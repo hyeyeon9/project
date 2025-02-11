@@ -15,4 +15,5 @@ public interface PostMapper {
 	public int PostDelete(int studyid);
 	public int PostUpdate(PostDTO dto);
 	public PostDTO findById(int studyid);
+	public List<PostDTO> findPostsByStudyIds(List<Integer> studyIds);
 }

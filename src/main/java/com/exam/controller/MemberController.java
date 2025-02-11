@@ -2,6 +2,8 @@ package com.exam.controller;
 
 
 import java.lang.reflect.Member;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.slf4j.LoggerFactory;
@@ -18,8 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.exam.dto.MemberDTO;
+import com.exam.dto.PostDTO;
 import com.exam.service.AuthenticationService;
 import com.exam.service.MemberService;
+import com.exam.service.PostService;
+import com.exam.service.ScrapService;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -31,14 +36,17 @@ public class MemberController {
 	
 	MemberService memberService;
 	AuthenticationService authService;
+	ScrapService scrapService;
+	PostService postService;
 	
-
-	public MemberController(MemberService memberService, AuthenticationService authService) {
+	public MemberController(MemberService memberService, AuthenticationService authService, ScrapService scrapService,
+			PostService postService) {
 		super();
 		this.memberService = memberService;
 		this.authService = authService;
+		this.scrapService = scrapService;
+		this.postService = postService;
 	}
-
 
 	//회원가입 화면 보이기
 	@GetMapping("/signup")
@@ -121,6 +129,23 @@ public class MemberController {
 		
 		MemberDTO db_dto = authService.findByUserid(userid);
 		m.addAttribute("mypage", db_dto);
+		
+		// 스크랩 테이블에서 studyid 리스트 조회
+		List<Integer> studyIds = scrapService.findScrappedStudyIds(userid);
+		List<PostDTO> scrappedPosts;
+		
+		if(studyIds == null ||studyIds.isEmpty() ) {
+			
+			scrappedPosts = new ArrayList<>(); // 혹은 Collections.emptyList();
+		}else {
+			// studyid 리스트를 기반으로 게시물 정보(PostDTO) 조회
+			scrappedPosts = postService.findPostsByStudyIds(studyIds);
+			
+		}
+		
+	
+		m.addAttribute("scrappedPosts",scrappedPosts );
+		
 		
 		return "mypage";
 		

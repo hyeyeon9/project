@@ -42,5 +42,20 @@
     JOIN member m ON p.userid = m.userid
     WHERE p.studyid = #{studyid}
 </select>
+
+	<select id="findPostsByStudyIds" resultType="PostDTO" parameterType="list">
+	
+		select studyid, title, description, category, userid, created_at
+		FROM study_posts
+		where studyid in
+		  <foreach collection="list" item="id" open="(" separator="," close=")">
+		 #{id}
+		</foreach>
+	
+	
+	</select>
+	
+	
+	
 	
 </mapper>

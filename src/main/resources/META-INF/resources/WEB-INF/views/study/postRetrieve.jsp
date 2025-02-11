@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
 
       body {
@@ -106,11 +107,48 @@
           margin-top:5px;
           border-radius:10px;
         }
+        
+        .filled{
+        	font-size: 20px;
+        }
 
     </style>
     
+    <script>
+    	$(document).ready(function(){
+    		
+    		$("#scrap-btn").on("click",function(){
+    			
+    			console.log("버튼클릭");
+    			let studyid = $("#scrap-btn").data("studyid");
+    			console.log(studyid);
+    			
+    			$.post("toggle",{studyid: studyid}, function(response){
+    					console.log(response);
+    				if(response.scrapped){
+    					$("#scrap-btn").find(".star-icon").addClass("filled");
+    					
+    				}else{
+    					$("#scrap-btn").find(".star-icon").removeClass("filled");
+    					
+    				}
+    				
+    				
+    			});
+    		});
+    		
+    		
+    	})
+  
+    	
+    
+    </script>
+    
+
+    
         <span class="category">${post.category}</span>
     	<div class="title">${post.title}</div>
+    
         <div class="RetrieveHeader">
   
             <div class="profile">
@@ -134,6 +172,18 @@
 
     
         <div class="content">${post.description}</div>
+        
+
+        
+<div>
+
+
+        <button id="scrap-btn" data-studyid="${post.studyid}">
+    			<span class="star-icon ${post.scrapped ? 'filled' : ''}">★</span>
+    	<button>
+
+</div>
+    	
 
 		
 
