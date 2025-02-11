@@ -7,8 +7,6 @@
 <title>Insert title here</title>
     <style>
 
-
-
 	/* 배치 */
 	.Homecontainer{
 		border : 2px red solid;
