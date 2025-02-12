@@ -34,7 +34,7 @@ public class HomeController {
 		super();
 		this.service = service;
 		this.authService = authService;
-		this.commentsService = commentsService;
+		this.commentsService = commentsService; 
 	}
 
 
