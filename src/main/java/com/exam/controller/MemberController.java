@@ -3,10 +3,14 @@ package com.exam.controller;
 
 import java.lang.reflect.Member;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -150,6 +154,29 @@ public class MemberController {
 		return "mypage";
 		
 		
+	}
+	
+	// 닉네임 수정하기
+	@PostMapping("updateNickname")
+	@ResponseBody
+	public ResponseEntity<String> updateNickname(@RequestParam("nickname") String newNickName) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		MemberDTO dto = (MemberDTO)auth.getPrincipal();
+		String userid = dto.getUserid();
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("userid", userid);
+		map.put("nickname", newNickName);
+		int n  = memberService.updateNickname(map );
+		
+		if(n>= 1) {
+			 return ResponseEntity.ok("닉네임 변경 성공");
+			
+		}else {
+			  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("변경 실패");
+		}
+	
 	}
 	
 }

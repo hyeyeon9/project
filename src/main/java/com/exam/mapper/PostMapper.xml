@@ -10,7 +10,7 @@
 
 	<!-- 전체 포스트 글 가져오기 -->
     <select id="findAll" resultType="PostDTO"> 
-		select p.studyid,p.title,p.description,p.category,p.userid,p.created_at, m.username
+		select p.studyid,p.title,p.description,p.category,p.userid,p.created_at, m.username,m.bgColor
 		FROM study_posts p
     	JOIN member m ON p.userid = m.userid
 		ORDER BY p.created_at DESC 
@@ -19,7 +19,7 @@
 	
 	<!-- 특정 카데고리별로 가져오기 -->
 	<select id="findByCategory" resultType="PostDTO" parameterType="string"> 
-    select p.studyid,p.title,p.description,p.category,p.userid,p.created_at, m.username
+    select p.studyid,p.title,p.description,p.category,p.userid,p.created_at, m.username,m.bgColor
     FROM study_posts p
     JOIN member m ON p.userid = m.userid
     where trim(p.category) = #{category}
@@ -49,9 +49,10 @@
 
 	<select id="findPostsByStudyIds" resultType="PostDTO" parameterType="list">
 	
-		select studyid, title, description, category, userid, created_at
-		FROM study_posts
-		where studyid in
+		select p.studyid, p.title, p.description, p.category, p.userid,p.created_at, m.username, m.bgColor
+		FROM study_posts p
+		JOIN member m ON p.userid = m.userid
+		where p.studyid in
 		  <foreach collection="list" item="id" open="(" separator="," close=")">
 		 #{id}
 		</foreach>

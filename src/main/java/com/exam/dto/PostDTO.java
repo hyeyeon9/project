@@ -17,6 +17,7 @@ public class PostDTO {
 	String username; // 👈 닉네임
 	Timestamp createdAt;
 	boolean isScrapped;  // ✅ 추가 (스크랩 여부)
+	String bgColor;   // 작성자 배경색
 	
 	public PostDTO() {
 		super();
@@ -24,7 +25,7 @@ public class PostDTO {
 	}
 
 	public PostDTO(int studyid, String title, String description, String category, String userid, String username,
-			Timestamp createdAt, boolean isScrapped) {
+			Timestamp createdAt, boolean isScrapped, String bgColor) {
 		super();
 		this.studyid = studyid;
 		this.title = title;
@@ -34,6 +35,7 @@ public class PostDTO {
 		this.username = username;
 		this.createdAt = createdAt;
 		this.isScrapped = isScrapped;
+		this.bgColor = bgColor;
 	}
 
 	public int getStudyid() {
@@ -99,15 +101,22 @@ public class PostDTO {
 	public void setScrapped(boolean isScrapped) {
 		this.isScrapped = isScrapped;
 	}
-	
-	
+
+	public String getBgColor() {
+		return bgColor;
+	}
+
+	public void setBgColor(String bgColor) {
+		this.bgColor = bgColor;
+	}
 
 	@Override
 	public String toString() {
 		return "PostDTO [studyid=" + studyid + ", title=" + title + ", description=" + description + ", category="
 				+ category + ", userid=" + userid + ", username=" + username + ", createdAt=" + createdAt
-				+ ", isScrapped=" + isScrapped + "]";
+				+ ", isScrapped=" + isScrapped + ", bgColor=" + bgColor + "]";
 	}
+	
 	
 	
 }

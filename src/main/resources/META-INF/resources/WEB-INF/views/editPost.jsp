@@ -11,11 +11,11 @@
     </style>
 </head>
 <body>
- <div class="App">
+
 	
 	<jsp:include page="study/editPost.jsp" flush="true" /> 
 
- </div>
+
 </body>
 </html>
 
