@@ -6,6 +6,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
+    
 .category-container {
     margin: 10px 0;
 }
@@ -211,11 +226,11 @@
    }
    
 
-
-
     </style>
 </head>
 <body>
+
+
 	 <h2>스터디 모집하기</h2>
 
  

@@ -13,6 +13,20 @@
             box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
         }
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
+
         /* 페이지 제목 */
         .edit-container h2 {
             text-align: center;

@@ -3,6 +3,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
   <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
+
       * {
         margin: 0;
         padding: 0;

@@ -3,9 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 
 	/* 배치 */
 	.Homecontainer{

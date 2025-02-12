@@ -9,6 +9,21 @@
 
 
 <style>
+
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
+
 	.home-contentsBox{
 		padding : 40px 100px;
 		/* background-color: #f5f6fa; */
