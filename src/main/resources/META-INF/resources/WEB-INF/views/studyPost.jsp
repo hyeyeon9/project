@@ -9,12 +9,14 @@
 
 	/* 배치 */
 	.Homecontainer{
-		border : 2px red solid;
+		border : 2px black;
 		display : flex;
+		 padding: 12px;
 	}
 	
 	.home-contentsBox{
-		border : 2px blue solid;
+		border : 2px black;
+		 padding: 50px;
 	}
 	
     </style>
