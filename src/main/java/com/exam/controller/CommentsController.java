@@ -33,7 +33,6 @@ public class CommentsController {
 
 
 
-
 	@PostMapping("/CommentsAdd")
 	public String CommentsAdd(@RequestParam String studyid,
 	                          @RequestParam String comments) {
@@ -54,28 +53,26 @@ public class CommentsController {
 	        // 로그인되지 않은 상태라면 로그인 페이지로 리다이렉트
 	        return "redirect:/login";
 	    }
-	    
+
+	    // 로그인한 사용자 정보
 	    MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
 	    String userid = memberDTO.getUserid();
-	    
-	    // (선택사항) DB에 해당 회원이 존재하는지 추가 검증
-	    MemberDTO dbMember = authService.findByUserid(userid);
-	    if (dbMember == null) {
-	        // 회원 데이터가 없으면 에러 처리
-	        return "errorPage";
-	    }
-	    
-	    // 댓글 객체 생성 후 등록
+	    String username = memberDTO.getUsername();  // username을 가져옵니다.
+
+	    // 댓글을 추가하기 위한 DTO 생성
 	    CommentsDTO dto = new CommentsDTO();
 	    dto.setStudyid(studyIdInt);
 	    dto.setComments(comments);
 	    dto.setUserid(userid);
-	    
+	    dto.setUsername(username);  // username도 DTO에 세팅
+
+	    // 댓글 추가 서비스 호출
 	    service.CommentsAdd(dto);
-	    
-	    // 댓글 등록 후, 기존 게시물 상세보기 페이지로 리다이렉트(PGR 패턴)
+
+	    // 댓글 등록 후, 해당 게시물 페이지로 리다이렉트
 	    return "redirect:/postRetrieve?studyid=" + studyIdInt;
 	}
+
 
 	
 	

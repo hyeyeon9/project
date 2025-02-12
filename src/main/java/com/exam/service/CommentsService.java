@@ -9,4 +9,5 @@ public interface CommentsService {
 	public int deleteComment(int commentsid);
 	public List<CommentsDTO> findAll(int studyid);
 	public int getCommentCount(int studyid);
+
 }
