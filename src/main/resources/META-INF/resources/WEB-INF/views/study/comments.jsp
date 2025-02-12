@@ -81,6 +81,10 @@ h3 {
     color: #888;
 }
 
+.comment-count-container-left {
+    position: relative;
+    top: -15px; /* 적당한 값을 지정하여 위로 이동 */
+}
 
 /* 댓글 작성 폼 */
 .comment-form-container {
@@ -124,7 +128,6 @@ input[type="text"]:focus {
 }
 
 
-
 /* 댓글 섹션 */
 #comment-h3 {
     font-size: 1.3rem;
@@ -138,16 +141,18 @@ input[type="text"]:focus {
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 280%;
+    width: 270%;
     /* max-width 제거: 크기를 줄이지 않음 */
     box-sizing: border-box;
-
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	display:flex;
+	flex-direction:column;
+	gap:10px;
 }
 
 .comment {
     padding: 32px;
-    border-bottom: 1px solid #f1f3f5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius:10px;
 }
 
 .comment:last-child {
@@ -161,6 +166,7 @@ input[type="text"]:focus {
 }
 
 .comment-content {
+border : 
     color: #495057;
     font-size: 1rem;
     margin-bottom: 12px;
@@ -173,25 +179,27 @@ input[type="text"]:focus {
 }
 
 .delete-btn {
-    background-color: #000;
+    background-color:#000 ;
     color: #fff;
     padding: 5px 16px;
-    font-size: 0.875rem;
+     
     border-radius: 8px;
     position: absolute;   /* 부모 요소에 대해 절대 위치 지정 */
     right: 0;  /* 오른쪽 끝으로 이동 */
     top: 80%;  /* 세로 중앙 정렬 */
     transform: translateY(-50%);  /* 정확한 세로 중앙 정렬을 위해 */
     cursor:pointer;
-    margin-right:10px;
-
+    margin-right:15px;
 }
 
 .comment {
-    position: relative;  /* 삭제 버튼이 부모 요소를 기준으로 위치를 잡을 수 있도록 */
+    position: relative;
     padding: 32px;
-    border-bottom: 1px solid #f1f3f5;
+    border-bottom: 2px #d3d3d3 solid;
+    border-radius: 0px; /* 댓글 영역 모서리 둥글게 */
+    background-color: #fff; /* 댓글 배경색 */
 }
+
 
 .delete-btn:hover {
     background-color: #333;
@@ -212,17 +220,6 @@ input[type="text"]:focus {
     background-color: #333;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .comment-form-container,
-    .comment-section {
-        padding: 16px;
-    }
-
-    .comment {
-        padding: 16px;
-    }
-}
 </style>
 
 <div class="container">
