@@ -10,16 +10,20 @@
 
 	<!-- 전체 포스트 글 가져오기 -->
     <select id="findAll" resultType="PostDTO"> 
-		select studyid,title,description,category,userid,created_at
-		from study_posts 
-		order by created_at desc;
+		select p.studyid,p.title,p.description,p.category,p.userid,p.created_at, m.username
+		FROM study_posts p
+    	JOIN member m ON p.userid = m.userid
+		ORDER BY p.created_at DESC 
+		
 	</select>
 	
 	<!-- 특정 카데고리별로 가져오기 -->
 	<select id="findByCategory" resultType="PostDTO" parameterType="string"> 
-    select studyid,title,description,category,userid,created_at
-    from study_posts 
-    where trim(category) = #{category}
+    select p.studyid,p.title,p.description,p.category,p.userid,p.created_at, m.username
+    FROM study_posts p
+    JOIN member m ON p.userid = m.userid
+    where trim(p.category) = #{category}
+    ORDER BY p.created_at DESC 
 	</select>
 	
 	<!-- 포스트 삭제하기 -->

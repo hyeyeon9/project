@@ -5,14 +5,14 @@
 
       body {
             font-family: 'Arial', sans-serif;
-            background-color: #f5f6fa !important;  /* 강제 적용 */
-    margin: 0;
-    padding: 0;
-    height: 100vh;  /* 전체 화면 크기 설정 */
-    display: flex;
-    flex-direction: column;  /* 세로 정렬 */
-    align-items: center;  /* 가로 중앙 정렬 */
-        }
+            background-color: #f5f6fa ;  
+   			 margin: 0;
+   			 padding: 0;
+ 
+   			 display: flex;
+   			 flex-direction: column;  /* 세로 정렬 */
+  			  align-items: center;  /* 가로 중앙 정렬 */
+     	   }
 
         .RetrieveContainer {
             width: 60%; /* 가로 너비 조정 */
@@ -22,6 +22,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top : 30px;
+            
         }
 
         .RetrieveHeader {
@@ -36,7 +37,8 @@
         .profile {
             display: flex;
             align-items: center;
-            margin-bottom : 15px;
+            margin-bottom : 7px;
+            margin-top:7px;
         }
 
         .profile-icon {
@@ -63,12 +65,13 @@
         }
 
         .title {
-            font-size: 30px;
+            font-size: 35px;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
         .content {
+        	padding-top :10px;
             font-size: 16px;
             color: #333;
             line-height: 1.6;
@@ -86,15 +89,15 @@
 
         .action-btn {
       		text-decoration: none;
-   			 color: white;
+   			 color: black;
    			    padding: 8px 10px;
-  			  background-color: #007bff;
+  			  background-color: #eae9e8;
   		      border-radius: 5px;
    		    display: inline-block;
         }
 
         .action-btn:hover {
-            color: #000;
+             background-color: #d3d3d3;
         }
 		
         .edit-icon, .delete-icon {
@@ -112,7 +115,25 @@
         }
         
         .filled{
-        	font-size: 20px;
+        	color :black;
+        }
+        
+        #scrap-btn{
+        
+        	margin-left : 570px;
+        	padding : 7px 13px;
+        	font-size: 16px;
+        	border : none;
+        	border-radius : 8px;
+        	color : grey;
+        	display:flex;
+        	cursor:pointer;
+        	background-color: #eae9e8;
+        	
+        }
+        
+        #scrap-btn:hover{
+        	color :black;
         }
 
     </style>
@@ -148,8 +169,20 @@
     </script>
     
 
-    
-        <span class="category">${post.category}</span>
+
+        <span class="category">
+        	<c:choose>
+        		<c:when test="${post.category == 'language' }"> 📜 어학 </c:when>
+        		<c:when test="${post.category == 'development'}"> 💻 개발 </c:when>
+  		        <c:when test="${post.category == 'design'}"> 💡 디자인</c:when>
+     		    <c:when test="${post.category == 'interview'}"> 👨‍💼 면접 </c:when>
+     		    <c:when test="${post.category == 'reading'}"> 📖 독서</c:when>
+     		    <c:otherwise>기타</c:otherwise>
+        	</c:choose>
+        
+        
+        </span>
+        
     	<div class="title">${post.title}</div>
     
         <div class="RetrieveHeader">
@@ -161,6 +194,13 @@
                     <div class="timestamp">${post.createdAt }</div> <!-- 날짜는 동적으로 변경 가능 -->
                 </div>
             </div>
+            
+            <c:if test="${loginUserId != post.userid}">
+                <button id="scrap-btn" data-studyid="${post.studyid}">
+    			 	 <span class="star-icon ${post.scrapped ? 'filled' : ''}">★ 스크랩 </span>
+            	<button>
+            </c:if>
+            
             <c:if test="${loginUserId eq post.userid}">
                 <div class="actions">
                     <a href="edit?studyid=${post.studyid}" class="action-btn">
@@ -180,10 +220,6 @@
         
 <div>
 
-
-        <button id="scrap-btn" data-studyid="${post.studyid}">
-    			<span class="star-icon ${post.scrapped ? 'filled' : ''}">★</span>
-    	<button>
 
 </div>
     	

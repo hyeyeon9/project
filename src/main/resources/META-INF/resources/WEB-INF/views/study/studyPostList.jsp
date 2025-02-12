@@ -11,55 +11,70 @@
 <style>
 	.home-contentsBox{
 		padding : 40px 100px;
-		background-color: #f5f6fa;
+		/* background-color: #f5f6fa; */
+		border-left : 2px #e9e9e9 solid;
 
 	}
 	
+	/*
 	#post-title{
 		font-size:23px;
 		font-weight:700;
 		margin-bottom : 20px;
+	}*/
+	
+	.category-nav {
+	    display: flex;
+	    gap: 20px;
+	    margin-bottom: 25px;
+	}
+
+	.category-ul {
+	    list-style: none;
+	    display: flex;
+	    gap: 25px;
+	    padding: 0;
 	}
 	
-	.category-nav{
-		padding : 10px;
-		margin-bottom : 20px;
+	.category-nav-link {
+	    font-size: 27px;
+	    color: grey; /* 기본 회색 */
+	    cursor: pointer;
+	    font-weight: 600;
+	    text-decoration: none;
+	    padding-bottom: 5px;
+	    transition: color 0.3s ease, border-bottom 0.3s ease;
 	}
 	
-	.category-ul > li{
-	 font-size : 18px;
-	 font-weight:500;
-	 padding: 7px 18px;
-	 background-color: #f0f0f0; 
-	 border-radius: 10px; 
-	 transition : all linear 0.1s;
-	
+	.category-nav-link a {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease;
+   }
+
+	/* 활성화된 상태 - 검정색 */
+	.category-nav-link.active a {
+    	color: #000; /* 선택된 카테고리는 검정색 */
+     	/* border-bottom: 3px solid #000; /* 선택된 항목 밑줄 */
 	}
 	
-	.category-ul > li:hover{
-		background-color: #e0e0e0;
-		cursor:pointer;
-	}
-	
-	.category-nav-link.active{
-		background-color: #e0e0e0;
-	}
+
 	
 	.posts-box{
 		display : flex;
 		flex-direction:column;
-		gap : 10px;
+		gap : 20px;
 	}
 	
 	.posts-content-box{
-		border : 2px #e0e0e0 solid;	
-		padding : 12px 10px;
+		border : 2px #e9e9e9 solid;	
+		padding : 15px 20px;
 		border-radius:10px;
 		backround-color:white;
 		display:flex;
 		flex-direction:column;
 		gap: 10px;
-		height : 210px;
+		height : 200px;
 		width:100%;
 		background-color:white;
 	}
@@ -81,9 +96,9 @@
 	}
 	
 	#contents-title{
-	    font-size:20px;
+	    font-size:22px;
 		font-weight:700;
-		margin-bottom:5px;
+		margin-bottom:3px;
 	}
 	
 	#contents-des{
@@ -101,14 +116,14 @@
 	}
 	
 	#post-category{
-		margin-top:5px;
-		background-color: #e0e0e0;
-		border-radius: 10px; 
+		background-color: white;
+		color : grey;
+		border : 1px #d3d3d3 solid;
+		border-radius: 15px; 
 		font-size:15px;
-		font-weight:700;
+		font-weight:500;
 		padding : 5px 10px;
-		width: min-content;
-		
+		width: max-content;
 	}
 	
 	#name-box{
@@ -120,7 +135,6 @@
 		display:flex;
 		justify-content: center;
         align-items: center;
-		
 	
 	}
 	
@@ -137,10 +151,10 @@
 
 </script>
 
-   	<div id="post-title"> 스터디 찾기 </div>
 
   <nav class="category-nav"> <!-- Http 요청 파라미터를 키-벨류 형식으로 저장하는 객체 => param 객체를 사용 -->
        <ul class="category-ul">
+         <li class="category-nav-link ${empty param.category ? 'active' : ''}"><a href="home">전체</a></li>
        	  <li class="category-nav-link ${param.category == 'language' ? 'active' : ''}"><a  href="posts?category=language">어학</a></li>
        	  <li  class="category-nav-link ${param.category == 'development' ? 'active' : ''}"><a href="posts?category=development">개발</a></li>
     	  <li class="category-nav-link ${param.category == 'design' ? 'active' : ''}"><a  href="posts?category=design">디자인</a></li>
@@ -160,17 +174,17 @@
 				String timeAgo = TimeUtil.getRelativeTime(createdAt);
 		%>
    
-    	
+    
      		<a href="postRetrieve?studyid=${post.studyid }" >                      
 				
 				<div class="posts-content-box">
       				
       				 <div id="post-profile"> 
       				 			<div id="name-box"  style="background-color: ${mypage.bgColor}">
-      				 				${fn:substring(loginUserName, 0, 1) }
+      				 				${post.username.substring(0,1)}
       				 			</div>
       				 
-      				 			 <div>${loginUserName }</div> 
+      				 			 <div>${post.username }</div> 
       				 			 <div><%= timeAgo %></div>
       				 			 
       				 			 </div>
@@ -178,7 +192,19 @@
       					 <div id="contents-title">${post.title }</div>
        				     <div id="contents-des">${post.description }</div>
        				 </div>
-       				 <span id="post-category"> ${post.category}</span>
+       				 <span id="post-category">
+       				 	   	<c:choose>
+        		<c:when test="${post.category == 'language' }"> 📜 어학 </c:when>
+        		<c:when test="${post.category == 'development'}"> 💻 개발 </c:when>
+  		        <c:when test="${post.category == 'design'}"> 💡 디자인</c:when>
+     		    <c:when test="${post.category == 'interview'}"> 👨‍💼 면접 </c:when>
+     		    <c:when test="${post.category == 'reading'}"> 📖 독서</c:when>
+     		    <c:otherwise>기타</c:otherwise>
+        	</c:choose>
+       				 
+       				 
+       				 
+       				 </span>
 
 				</div>
  			</a>    
