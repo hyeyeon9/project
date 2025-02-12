@@ -1,5 +1,7 @@
 package com.exam.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO idCheck(String userid) {
 		return mapper.idCheck(userid);
+	}
+
+	@Override
+	public int updateNickname(Map<String, String> map) {
+		return mapper.updateNickname(map);
 	}
 
 }

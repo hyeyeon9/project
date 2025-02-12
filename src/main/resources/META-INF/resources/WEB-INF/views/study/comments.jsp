@@ -18,6 +18,22 @@ $(document).ready(function(){
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
+
+
 /* 전체적인 스타일 */
 body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
@@ -73,11 +89,10 @@ h3 {
 /* 댓글 작성 폼 */
 .comment-form-container {
     background-color: white;
-    border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
-    padding: 32px;
-    margin-bottom: 32px;
-    width: 360%; /* 가로 두 배 넓히기 */
+    padding: 0px 50px;
+    margin-bottom: 30px;
+    width: 300%; /* 가로 두 배 넓히기 */
     transform: translateX(0%);
     box-sizing: border-box;
 }
@@ -87,6 +102,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-top:10px;
 }
 
 input[type="text"] {
@@ -112,22 +128,11 @@ input[type="text"]:focus {
 }
 
 
-
-button[type="submit"], #cancelBtn {
-    background-color: #000;
-    color: #fff;
-    min-width: 120px;
-}
-
-button[type="submit"]:hover, #cancelBtn:hover {
-    background-color: #333;
-}
-
 /* 댓글 섹션 */
-h3 {
+#comment-h3 {
     font-size: 1.3rem;
     color: #495057;
-    margin: 32px 0 16px;
+    margin-top:-50px;
     align-self: flex-start;
     
 }
@@ -136,9 +141,11 @@ h3 {
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 300%;
+    width: 280%;
     /* max-width 제거: 크기를 줄이지 않음 */
     box-sizing: border-box;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .comment {
@@ -180,7 +187,8 @@ h3 {
     top:80%;  /* 세로 중앙 정렬 */
     transform: translateY(-50%); 
      /* 정확한 세로 중앙 정렬을 위해 */
-     
+    cursor:pointer;
+    margin-right:10px; 
 }
 
 .comment {
@@ -191,21 +199,12 @@ h3 {
     border-radius: 12px; /* 댓글 영역 모서리 둥글게 */
     background-color: #fff; /* 댓글 배경색 */
 }
-h3 {
-    position: relative;
-    top: -90px;  /* 위로 이동 */
-}
-.comment-section {
-    position: relative;
-    top: -90px;  /* 위로 이동 */
-}
-.comment-section {
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 댓글 목록 영역에 그림자 추가 */
+.comment {
+    position: relative;  /* 삭제 버튼이 부모 요소를 기준으로 위치를 잡을 수 있도록 */
     padding: 32px;
-    margin-bottom: 32px;
-    
+    border-bottom: 1px solid #f1f3f5;
+    border-radius: 12px; /* 댓글 영역 모서리 둥글게 */
+    background-color: #fff; /* 댓글 배경색 */
 }
 
 
@@ -236,12 +235,12 @@ h3 {
             <input type="text" name="comments" id="comments" placeholder="${loginUserName}님, 댓글을 작성해보세요." />
             <div class="button-group">
                
-                <button type="submit">등록</button>
+                <button type="submit" id="submit-btn">등록</button>
             </div>
         </form>
     </div>
 
-    <h3>댓글</h3>
+    <h3  id="comment-h3" >댓글</h3>
 
     <div class="comment-section">
         <c:forEach var="comment" items="${comments}">

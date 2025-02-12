@@ -20,4 +20,12 @@
 		where userid=#{userid}
 	
 	</select>
+	
+	<!-- 닉네임 변경 -->
+	<update id="updateNickname" parameterType="map">
+		update member
+		set username = #{nickname}
+		where userid = #{userid}
+	
+	</update> 
 </mapper>
