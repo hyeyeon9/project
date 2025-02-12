@@ -13,6 +13,21 @@
 
 </script>
  <style>
+ 
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
+ 
  	.home-nav{
 		flex : 0 0 200px;  /* flex-grow(얼마나 확장할지), flex-shrink(얼마나 축소할지), flex-basis(기본크기) */
 		padding : 25px 10px;
