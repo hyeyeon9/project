@@ -177,6 +177,7 @@
   		        <c:when test="${post.category == 'design'}"> 💡 디자인</c:when>
      		    <c:when test="${post.category == 'interview'}"> 👨‍💼 면접 </c:when>
      		    <c:when test="${post.category == 'reading'}"> 📖 독서</c:when>
+     		    <c:when test="${post.category == 'others'}"> 🔍 기타</c:when>
      		    <c:otherwise>기타</c:otherwise>
         	</c:choose>
         
