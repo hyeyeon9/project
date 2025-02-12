@@ -80,6 +80,9 @@
       }
       
       #updateBtn{
+      	position: absolute;
+      	top:30%;
+      	right:51%;
         background-color: white;
         color : grey;
         padding:4px 13px;
@@ -133,13 +136,13 @@
 	.mypage-userData{
 		display:flex;
 		flex-direction:column;
-		gap:10px;
+		gap:5px;
 	
 	}
 	
 	#userid{
 	margin-top:6px;
-		font-size : 15px;
+	font-size : 15px;
 	}
 	
 	#username{
@@ -193,7 +196,7 @@
     padding: 15px;
     display: flex;
     gap: 5px;
-    height :150px;
+    height :160px;
     padding-bottom :22px;
     margin-bottom : 5px;
      position: relative; /* pseudo-element를 절대 위치로 배치하기 위한 설정 */
@@ -223,7 +226,6 @@
 }
 
 #scrap-contents-des {
-     
     font-size: 14px;
     color: #555;
      /* 줄 제한 및 생략 부호 설정 */
@@ -233,12 +235,10 @@
    		 /* 잘린 부분에 생략 부호(…)*/
    	 	overflow: hidden;
     	text-overflow: ellipsis;
-    	line-height: 1.6;
+    	line-height: 1.7;
     	height :81%;
-    	padding-bottom : 5px;
-    	padding-top : 1px;
-    	
-    	 
+    	padding-bottom : 10px;
+    	padding-top:1px;
 }
 
 #scrap-post-category {

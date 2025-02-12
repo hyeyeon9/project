@@ -85,10 +85,9 @@ h3 {
 /* 댓글 작성 폼 */
 .comment-form-container {
     background-color: white;
-    border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
-    padding: 32px;
-    margin-bottom: 32px;
+    padding: 0px 50px;
+    margin-bottom: 30px;
     width: 300%; /* 가로 두 배 넓히기 */
     transform: translateX(0%);
     box-sizing: border-box;
@@ -99,6 +98,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-top:10px;
 }
 
 input[type="text"] {
@@ -123,30 +123,13 @@ input[type="text"]:focus {
     justify-content: flex-end;
 }
 
-button {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-}
 
-button[type="submit"], #cancelBtn {
-    background-color: #000;
-    color: #fff;
-    min-width: 120px;
-}
-
-button[type="submit"]:hover, #cancelBtn:hover {
-    background-color: #333;
-}
 
 /* 댓글 섹션 */
-h3 {
+#comment-h3 {
     font-size: 1.3rem;
     color: #495057;
-    margin: 32px 0 16px;
+    margin-top:-50px;
     align-self: flex-start;
     
 }
@@ -155,9 +138,11 @@ h3 {
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 300%;
+    width: 280%;
     /* max-width 제거: 크기를 줄이지 않음 */
     box-sizing: border-box;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .comment {
@@ -190,13 +175,16 @@ h3 {
 .delete-btn {
     background-color: #000;
     color: #fff;
-    padding: 8px 16px;
+    padding: 5px 16px;
     font-size: 0.875rem;
     border-radius: 8px;
     position: absolute;   /* 부모 요소에 대해 절대 위치 지정 */
     right: 0;  /* 오른쪽 끝으로 이동 */
     top: 80%;  /* 세로 중앙 정렬 */
     transform: translateY(-50%);  /* 정확한 세로 중앙 정렬을 위해 */
+    cursor:pointer;
+    margin-right:10px;
+
 }
 
 .comment {
@@ -206,6 +194,21 @@ h3 {
 }
 
 .delete-btn:hover {
+    background-color: #333;
+}
+
+#submit-btn{
+	border-radius:10px;
+	padding:8px 5px;
+	cursor:pointer;
+	  background-color: #000;
+    color: #fff;
+    width: 80px;
+    font-size:15px;
+}
+
+
+#submit-btn:hover {
     background-color: #333;
 }
 
@@ -227,17 +230,17 @@ h3 {
         <!-- 댓글 개수를 왼쪽 상단에 배치 -->
         <div class="comment-count-container-left">댓글 <span>${commentCount}</span></div>
         
-        <form class="commentsForm" action="CommentsAdd" method="post">
+        <form class="commentsForm" action="CommentsAdd" method="post" >
             <input type="hidden" value="${post.studyid}" name="studyid"/>
             <input type="text" name="comments" id="comments" placeholder="${loginUserName}님, 댓글을 작성해보세요." />
             <div class="button-group">
                
-                <button type="submit">등록</button>
+                <button type="submit" id="submit-btn">등록</button>
             </div>
         </form>
     </div>
 
-    <h3>댓글</h3>
+    <h3 id="comment-h3">댓글</h3>
 
     <div class="comment-section">
         <c:forEach var="comment" items="${comments}">

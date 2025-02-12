@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
 
@@ -135,7 +136,7 @@
         
         #scrap-btn{
         
-        	margin-left : 570px;
+        	margin-left : 540px;
         	padding : 7px 13px;
         	font-size: 16px;
         	border : none;
@@ -146,10 +147,7 @@
         	background-color: #eae9e8;
         	
         }
-        
-        #scrap-btn:hover{
-        	color :black;
-        }
+
 
     </style>
     
@@ -210,13 +208,16 @@
                 <div class="profile-icon" style="background-color: ${post.bgColor}">${post.username.substring(0,1)}</div>
                 <div>
                     <div class="author">${post.username}</div>
-                    <div class="timestamp">${post.createdAt }</div> <!-- 날짜는 동적으로 변경 가능 -->
+                    <fmt:setLocale value="ko_KR"/>
+                    <div class="timestamp">
+                    <fmt:formatDate value="${post.createdAt}" pattern="yyyy-MM-dd a h시 mm분"/>           
+                    </div> <!-- 날짜는 동적으로 변경 가능 -->
                 </div>
             </div>
             
             <c:if test="${loginUserId != post.userid}">
                 <button id="scrap-btn" data-studyid="${post.studyid}">
-    			 	 <span class="star-icon ${post.scrapped ? 'filled' : ''}">★ 스크랩 </span>
+    			 	 <span class="star-icon ${post.scrapped ? 'filled' : ''}">☆ 스크랩 </span>
             	</button>
             </c:if>
             

@@ -81,13 +81,19 @@ public class MemberController {
 		log.info("pw :{}", pw);
 		log.info("encodedPW :{}", encodedPW);
 		
-		String[] softColors = { "#FFB6C1", // Light Pink
-                "#FFDAB9", // Peach Puff
-                "#E6E6FA", // Lavender
-                "#F0E68C", // Khaki
-                "#98FB98", // Pale Green
-                "#AFEEEE", // Pale Turquoise
-                "#D3D3D3"};  // Light Gray
+		String[] softColors = { 
+				"#D3D3D3", // Light Pink
+                "#90EE90", // Peach Puff
+                "#FFB6C1", // Lavender
+                "#FFA07A", // Khaki
+                "#20B2AA", // Pale Green
+                "#87CEFA", // Pale Turquoise
+                "#778899",
+                "#FFFFE0", // Pale Green
+                "#DB7093", // Pale Turquoise
+                "#FFEFD5",
+                "#CD853F"
+		};  // Light Gray
 
 		Random random = new Random();
 		String bgColor = softColors[random.nextInt(softColors.length)];
