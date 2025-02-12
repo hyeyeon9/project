@@ -156,11 +156,12 @@
   <nav class="category-nav"> <!-- Http 요청 파라미터를 키-벨류 형식으로 저장하는 객체 => param 객체를 사용 -->
        <ul class="category-ul">
          <li class="category-nav-link ${empty param.category ? 'active' : ''}"><a href="home">전체</a></li>
-       	  <li class="category-nav-link ${param.category == 'language' ? 'active' : ''}"><a  href="posts?category=language">어학</a></li>
-       	  <li  class="category-nav-link ${param.category == 'development' ? 'active' : ''}"><a href="posts?category=development">개발</a></li>
-    	  <li class="category-nav-link ${param.category == 'design' ? 'active' : ''}"><a  href="posts?category=design">디자인</a></li>
-    	   <li class="category-nav-link ${param.category == 'interview' ? 'active' : ''}"><a  href="posts?category=interview">면접</a></li>
-    	  <li class="category-nav-link ${param.category == 'reading' ? 'active' : ''}"><a  href="posts?category=reading">독서</a></li>
+       	 <li class="category-nav-link ${param.category == 'language' ? 'active' : ''}"><a  href="posts?category=language">어학</a></li>
+       	 <li  class="category-nav-link ${param.category == 'development' ? 'active' : ''}"><a href="posts?category=development">개발</a></li>
+    	 <li class="category-nav-link ${param.category == 'design' ? 'active' : ''}"><a  href="posts?category=design">디자인</a></li>
+    	 <li class="category-nav-link ${param.category == 'interview' ? 'active' : ''}"><a  href="posts?category=interview">면접</a></li>
+    	 <li class="category-nav-link ${param.category == 'reading' ? 'active' : ''}"><a  href="posts?category=reading">독서</a></li>
+    	 <li class="category-nav-link ${param.category == 'others' ? 'active' : ''}"><a  href="posts?category=others">기타</a></li>
        </ul>
   
   </nav>     
@@ -200,6 +201,7 @@
   		        <c:when test="${post.category == 'design'}"> 💡 디자인</c:when>
      		    <c:when test="${post.category == 'interview'}"> 👨‍💼 면접 </c:when>
      		    <c:when test="${post.category == 'reading'}"> 📖 독서</c:when>
+     		    <c:when test="${post.category == 'others'}"> 🔍 기타</c:when>
      		    <c:otherwise>기타</c:otherwise>
         	</c:choose>
        				 

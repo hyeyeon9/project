@@ -71,7 +71,7 @@
 
         /* 제목 입력 필드 */
         .input-div input[type="text"] {
-            width: 90%;
+            width: 50%;
             padding: 12px;
             font-size: 16px;
             border-radius: 5px;
@@ -89,13 +89,13 @@
 
         /* 카테고리 선택 */
         .category-container {
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .category-label {
             font-weight: bold;
             font-size: 18px;
-            color: #F85253;
+            color: black;
             margin-bottom: 15px;
             display: block;
         }
@@ -127,14 +127,14 @@
         }
 
 
-      /* 본문 글자 */
+      /* 내용 글자 */
       label[for="description"] {
        display: block;           
        font-size: 18px;           
        font-weight: bold;        
        color: #333;              
        margin-bottom: 8px; 
-       margin-top: 20px;   
+       margin-top: 40px;   
             
       }
 
@@ -142,7 +142,7 @@
         /* 본문 내용 */
    	.text-area {
             width: 90%;
-            height: 200px;
+            height: 400px;
             padding: 15px;
             font-size: 16px;
             border-radius: 5px;
@@ -223,7 +223,7 @@
  	
  	<!-- 카테고리 선택 -->
 	<div class="category-container">
-        <label class="category-label">카테고리 선택:</label>
+        <label class="category-label">카테고리 선택</label>
         <div class="category-options">
             <input type="radio" id="language" name="category" value="language">
             <label for="language" class="category-bubble">어학</label>
@@ -239,6 +239,9 @@
 
             <input type="radio" id="reading" name="category" value="reading">
             <label for="reading" class="category-bubble">독서</label>
+            
+             <input type="radio" id="others" name="category" value="others">
+            <label for="others" class="category-bubble">기타</label>
         </div>
     </div>
     
@@ -253,11 +256,9 @@
     <!-- 하단의 취소와 저장 버튼 -->
     <div class="button-container">
     
-   	 <!--  
+   	
     	 <button type = "button" class="cancel-btn">취소</button> <br>
-    	-->
-        
-    
+    	
          <button type = "submit" class="save-btn">저장</button> <br>
      </div>
 	
