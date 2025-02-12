@@ -61,13 +61,15 @@
         margin-top : 20px;
         padding : 10px;
         height : 220px;
+        border : 1px #d3d3d3 solid;
+         border-radius: 8px;
       }
       
       .mainProfile{
       height : 100px;
         display: flex;
         gap:20px;
-        border-bottom:2px rgb(214, 214, 414) solid;
+        border-bottom:2px #d3d3d3 solid;
         margin-bottom : 20px;
         padding : 10px;
         align-items: center;
@@ -76,9 +78,9 @@
       
       #updateBtn{
         background-color: white;
-        color : sandybrown;
+        color : grey;
         padding:4px 13px;
-		border: 2px sandybrown solid;
+		border: 1px grey solid;
         border-radius : 5px;
        
         cursor:pointer;
@@ -163,6 +165,7 @@
     flex-direction: column;
     gap: 15px;
     padding-top:30px;
+    margin-right:50px;
     
 }
 
@@ -175,6 +178,7 @@
 }
 
 	.scrapPost-container{
+	     border : 1px #d3d3d3 solid;
 		 background: white;
 		 padding : 3px;
 		  border-radius: 8px;
@@ -185,32 +189,38 @@
     background: white;
     padding: 15px;
     display: flex;
-    flex-direction: column;
     gap: 5px;
-    height :170px;
-    border-bottom : 1px solid black;
+    height :150px;
+    padding-bottom :22px;
     margin-bottom : 5px;
+     position: relative; /* pseudo-element를 절대 위치로 배치하기 위한 설정 */
 }
 
-.scrapPost-content-box:last-child{
-	
-	border: none;
+.scrapPost-content-box::after{
+	content: "";
+    position: absolute;
+    left: 20px;  /* 좌측에서 20px 떨어진 위치에서 시작 (원하는 값으로 조정) */
+    right: 20px; /* 우측에서 20px 떨어진 위치에서 끝남 */
+    bottom: 0;
+    border-bottom: 1px solid #d3d3d3; /* 원하는 선 스타일 */
 }
 
 
 #scrap-contents {
     display: flex;
     flex-direction: column;
+    padding-left:5px;
 }
 
 #scrap-contents-title {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
     color: #222;
-    margin-bottom : 10px;
+    margin-bottom : 7px;
 }
 
 #scrap-contents-des {
+     
     font-size: 14px;
     color: #555;
      /* 줄 제한 및 생략 부호 설정 */
@@ -220,23 +230,99 @@
    		 /* 잘린 부분에 생략 부호(…)*/
    	 	overflow: hidden;
     	text-overflow: ellipsis;
-    	line-height: 1.5;
-    	height :60px;
+    	line-height: 1.6;
+    	height :81%;
+    	padding-bottom : 5px;
+    	padding-top : 1px;
+    	
+    	 
 }
 
 #scrap-post-category {
-    font-size: 14px;
-    background: #ddd;
-    padding: 5px 10px;
+	
+    font-size: 13px;
+    background: #e9e9e9;
+    padding: 3px 12px;
     border-radius: 5px;
     display: inline-block;
-    margin-top: 8px;
-    color: #333;
-     width : min-content;
+    color: black;
+    width : max-content;
+	font-weight:700;
+	margin-bottom:-13px;
 }
 	
+#scrap-name-tag{
+    width : 30px;
+    height:30px;
+	border-radius:50%;
+	font-size : 15px;
+	font-weight:700;
+		display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#usernameEdit{
+}
+
+#usernameInput{
+margin-top : 5px;
+font-size:15px;
+border : 1px #d3d3d3 solid;
+padding : 7px 12px;
+border-radius : 8px;
+width : 400px;
+}
+
+#saveBtn{
+	padding : 7px 10px;
+	border :none;
+	cursor:pointer;
+
+}
+
+#saveBtn:hover{
+	font-weight:700;
+}
 
     </style>
+    
+ <script>
+$(document).ready(function(){
+    // 수정 버튼 클릭 시: 기존 표시 영역은 숨기고 인풋 영역 표시
+    $("#updateBtn").click(function(){
+        $(".subProfile-box").toggle();
+        $("#usernameEdit").toggle();
+    });
+    
+    $("#saveBtn").on("click", function(){
+    	
+    	var newNickName = $("#usernameInput").val();
+    	
+    	$.ajax({
+    		url :"updateNickname",
+    		type:"POST",
+    		data :{nickname : newNickName},
+    		success : function(response){
+    			// 서버에서 업데이트 성공 응답을 받은 경우
+    			$("#username").text(newNickName);
+    			$("#displayNickname").text(newNickName);
+    			 $(".subProfile-box").show();
+    		     $("#usernameEdit").hide();
+    			
+    		},
+    		error : function(){
+    			alert("닉네임 변경에 실패했습니다.")
+    		}
+    	})
+    	
+    	
+    	
+    })
+
+});
+
+</script>
  
  
 
@@ -251,13 +337,12 @@
 		 <div class ="MyProfileContainer">
 			
 			<span id="MyprofileTitle">내 프로필</span>
-			
 			<div class="profile-content-box">
 				<div class="mainProfile">
 					<div id="name-box" style="background-color: ${mypage.bgColor}">
       				 				${fn:substring(mypage.username, 0, 1) }
       				 			</div>
-					<div clsss="mypage-userData">
+					<div class="mypage-userData">
 						<div id="username">${mypage.username}</div>
 						<div id="userid">${mypage.userid}</div>
 					</div>
@@ -265,14 +350,23 @@
 			     </div>
 		
 				<div class="subProfile">
-					<div class="subProfile_content">
-						<div class ="subProfile_content_label">닉네임</div>
-						<div>${mypage.username}</div>
+					<div class ="subProfile-box">
+						<div class="subProfile_content">
+							<div class ="subProfile_content_label">닉네임</div>
+							<div id="displayNickname">${mypage.username}</div>
+						</div>
+						<div class="subProfile_content">
+							<div class ="subProfile_content_label">아이디</div>
+							<div>${mypage.userid}</div>
+						</div>
 					</div>
-					<div class="subProfile_content">
-						<div class ="subProfile_content_label">아이디</div>
-						<div>${mypage.userid}</div>
-					</div>
+					
+					 <!-- 인풋 필드와 저장 버튼 영역 (초기엔 숨김) -->
+    				<div id="usernameEdit" style="display:none;">
+    						 <label for="usernameInput">닉네임</label> </br>
+       						 <input type="text" id="usernameInput" value="${mypage.username}" />
+       						 <button id="saveBtn">저장</button>
+   					</div>
 
 				</div>
 
@@ -285,16 +379,18 @@
      <c:forEach var="scrapPost" items="${scrappedPosts}">
        <!-- 또는 원하는 필드를 출력: ${scrapPost.title} 등    ${scrapPost} -->
         
-        
+          <a href="postRetrieve?studyid=${scrapPost.studyid}" style="text-decoration:none; color:inherit;">
         	<div class="scrapPost-content-box">
-      				
+      			 <div id="scrap-name-box" >
+      			      <div id="scrap-name-tag" style="background-color: ${scrapPost.bgColor}">${fn:substring(scrapPost.username, 0, 1)}</div>
+      			 </div>
       			 <div id="scrap-contents">
       				 <div id="scrap-contents-title">${scrapPost.title }</div>
        				 <div id="scrap-contents-des">${scrapPost.description }</div>
+       				 <span id="scrap-post-category"> ${scrapPost.category}</span>
        		     </div>
-       		     <span id="scrap-post-category"> ${scrapPost.category}</span>
-
 		   </div>
+		   </a>
           </c:forEach>
         </div>
    

@@ -70,8 +70,13 @@
             margin-bottom: 30px;
             font-size: 32px;
             color: #333;
+            margin-top:-10px;
         }
         
+        #post-form{
+        margin-top:-20px;
+        
+        }
         /* 제목 글자 */
         label[for="title"] {
        display: block;           
@@ -92,7 +97,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
             transition: border-color 0.3s;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
       .input-div input[type="title"]:focus {
@@ -104,7 +109,7 @@
 
         /* 카테고리 선택 */
         .category-container {
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .category-label {
@@ -149,7 +154,7 @@
        font-weight: bold;        
        color: #333;              
        margin-bottom: 8px; 
-       margin-top: 40px;   
+       margin-top: 20px;   
             
       }
 
@@ -228,7 +233,7 @@
 	 <h2>스터디 모집하기</h2>
 
  
-  <form action="postAdd" method="post" >
+  <form action="postAdd" method="post" id="post-form">
   
     <!-- 제목 입력 필드 -->
     <div class="input-div">
@@ -241,22 +246,22 @@
         <label class="category-label">카테고리 선택</label>
         <div class="category-options">
             <input type="radio" id="language" name="category" value="language">
-            <label for="language" class="category-bubble">어학</label>
+            <label for="language" class="category-bubble">📜 어학</label>
 
             <input type="radio" id="development" name="category" value="development">
-            <label for="development" class="category-bubble">개발</label>
+            <label for="development" class="category-bubble">💻 개발</label>
 
             <input type="radio" id="design" name="category" value="design">
-            <label for="design" class="category-bubble">디자인</label>
+            <label for="design" class="category-bubble">💡 디자인</label>
 
             <input type="radio" id="interview" name="category" value="interview">
-            <label for="interview" class="category-bubble">면접</label>
+            <label for="interview" class="category-bubble">👨‍💼 면접</label>
 
             <input type="radio" id="reading" name="category" value="reading">
-            <label for="reading" class="category-bubble">독서</label>
+            <label for="reading" class="category-bubble"> 📖 독서</label>
             
              <input type="radio" id="others" name="category" value="others">
-            <label for="others" class="category-bubble">기타</label>
+            <label for="others" class="category-bubble">🔍 기타</label>
         </div>
     </div>
     

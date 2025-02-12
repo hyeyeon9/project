@@ -60,7 +60,7 @@
             width: 40px;
             height: 40px;
           
-            color: white;
+            color: black;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -204,7 +204,7 @@
         <div class="RetrieveHeader">
   
             <div class="profile">
-                <div class="profile-icon" style="background-color: ${mypage.bgColor}">${post.username.substring(0,1)}</div>
+                <div class="profile-icon" style="background-color: ${post.bgColor}">${post.username.substring(0,1)}</div>
                 <div>
                     <div class="author">${post.username}</div>
                     <div class="timestamp">${post.createdAt }</div> <!-- 날짜는 동적으로 변경 가능 -->
@@ -214,7 +214,7 @@
             <c:if test="${loginUserId != post.userid}">
                 <button id="scrap-btn" data-studyid="${post.studyid}">
     			 	 <span class="star-icon ${post.scrapped ? 'filled' : ''}">★ 스크랩 </span>
-            	<button>
+            	</button>
             </c:if>
             
             <c:if test="${loginUserId eq post.userid}">

@@ -142,11 +142,12 @@
 	}
 	
 	#name-box{
-		font-size:15px;
+	font-weight:700
+		font-size:13px;
 		width:25px;
 		height:25px;
 		border-radius:50%;
-		color:white;
+		color:black;
 		display:flex;
 		justify-content: center;
         align-items: center;
@@ -196,7 +197,7 @@
 				<div class="posts-content-box">
       				
       				 <div id="post-profile"> 
-      				 			<div id="name-box"  style="background-color: ${mypage.bgColor}">
+      				 			<div id="name-box"  style="background-color: ${post.bgColor}">
       				 				${post.username.substring(0,1)}
       				 			</div>
       				 
