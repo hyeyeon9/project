@@ -3,6 +3,19 @@
  <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
  <style>
  
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+    
+      body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      h2 {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        
+      label, input, textarea {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        } 
        /* main.css */
       * {
         margin: 0;
