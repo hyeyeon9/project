@@ -176,9 +176,17 @@ h3 {
     color: #fff;
     padding: 8px 16px;
     font-size: 0.875rem;
-    margin-top: 12px;
     border-radius: 8px;
-    
+    position: absolute;   /* 부모 요소에 대해 절대 위치 지정 */
+    right: 0;  /* 오른쪽 끝으로 이동 */
+    top: 80%;  /* 세로 중앙 정렬 */
+    transform: translateY(-50%);  /* 정확한 세로 중앙 정렬을 위해 */
+}
+
+.comment {
+    position: relative;  /* 삭제 버튼이 부모 요소를 기준으로 위치를 잡을 수 있도록 */
+    padding: 32px;
+    border-bottom: 1px solid #f1f3f5;
 }
 
 .delete-btn:hover {
