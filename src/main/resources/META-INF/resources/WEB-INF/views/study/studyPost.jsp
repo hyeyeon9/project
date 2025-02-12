@@ -76,7 +76,7 @@
 
         /* 제목 입력 필드 */
         .input-div input[type="text"] {
-            width: 50%;
+            width: 90%;
             padding: 12px;
             font-size: 16px;
             border-radius: 5px;
@@ -171,15 +171,16 @@
          gap: 20px;         
        justify-content: flex-end;  
        margin-top: 20px;   
+       width : 92%;
    }
 
    /* 취소 버튼 스타일 */
    .cancel-btn {
-       width: 120px;
+       width: 100px;
        padding: 12px 0;
        background-color: #28a745;
        color: white;
-       font-size: 18px;
+       font-size: 16px;
        border-radius: 5px;
        border: none;
        cursor: pointer;
@@ -193,11 +194,11 @@
 
    /* 저장 버튼 스타일 */
    .save-btn {
-       width: 120px;        
+       width: 100px;        
        padding: 12px 0;
        background-color: #F85253;
        color: white;
-       font-size: 18px;
+       font-size: 16px;
        border-radius: 5px;
        border: none;
        cursor: pointer;
@@ -262,7 +263,7 @@
     <div class="button-container">
     
    	
-    	 <button type = "button" class="cancel-btn">취소</button> <br>
+    	
     	
          <button type = "submit" class="save-btn">저장</button> <br>
      </div>

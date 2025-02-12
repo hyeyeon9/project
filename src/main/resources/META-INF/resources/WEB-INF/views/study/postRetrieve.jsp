@@ -151,9 +151,12 @@
     					console.log(response);
     				if(response.scrapped){
     					$("#scrap-btn").find(".star-icon").addClass("filled");
+    					$("#scrap-btn").find(".star-icon").text("★ 스크랩");
+    					
     					
     				}else{
     					$("#scrap-btn").find(".star-icon").removeClass("filled");
+    					$("#scrap-btn").find(".star-icon").text("☆ 스크랩");
     					
     				}
     				

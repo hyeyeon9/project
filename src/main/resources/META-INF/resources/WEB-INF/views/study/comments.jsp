@@ -226,7 +226,7 @@ h3 {
     <div class="comment-section">
         <c:forEach var="comment" items="${comments}">
             <div class="comment">
-                <div class="comment-author">${comment.userid}</div>
+                <div class="comment-author">${loginUserName}</div>
                 <div class="comment-content">${comment.comments}</div>
                 <div class="comment-timestamp">${comment.created_at}</div>
                 <c:if test="${loginUserId eq comment.userid}">

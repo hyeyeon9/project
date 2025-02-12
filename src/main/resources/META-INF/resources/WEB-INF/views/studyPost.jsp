@@ -11,12 +11,13 @@
 	.Homecontainer{
 		border : 2px black;
 		display : flex;
-		 padding: 12px;
+		
 	}
 	
 	.home-contentsBox{
 		border : 2px black;
 		 padding: 50px;
+		 border-left : 2px #e9e9e9 solid;
 	}
 	
     </style>

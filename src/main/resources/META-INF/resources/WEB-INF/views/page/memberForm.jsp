@@ -38,7 +38,7 @@
       
       .signUpFormTitle {
         font-size: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
       }
 
       .signUpForm {
@@ -79,7 +79,7 @@
       
       .btn-div{
       	width:100%;
-      	margin-left:85px;
+      	margin-left:93px;
       }
       
       .label{
@@ -105,12 +105,7 @@
         margin-top : 5px;
       }
       
-      #join-us-text{
-      color:#E5AFAA;
-      font-size:15px;
-      font-weight:500;
-      margin-bottom:15px;
-      }
+
       
       #homeBtn{
          position: absolute;
@@ -152,6 +147,11 @@ $(document).ready(function(){
 			success:function(responseText,status , xhr){
 				 console.log(responseText, status);
 				 $("#idcheck").text(responseText);
+				 if (responseText.indexOf("중복") !== -1) {
+				      $("#idcheck").css("color", "red");
+				    } else {
+				      $("#idcheck").css("color", "blue");
+				    }
 			},
 			error: function(xhr, status, error) {
                 console.log("에러 발생:", error);
@@ -168,13 +168,11 @@ $(document).ready(function(){
 		var pw = $("#password").val();
 		var pw2 = $("#password2").val();
 		
-		var mesg ="비밀번호가 일치합니다.";
-		if(pw != pw2){
-			mesg = "비밀번호가 다릅니다.";
-			console.log(mesg);
-		}
-		
-		$("#pwdcheck").text(mesg);
+		if (pw !== pw2) {
+		    $("#pwdcheck").text("비밀번호가 다릅니다.").css("color", "red");
+		  } else {
+		    $("#pwdcheck").text("비밀번호가 일치합니다.").css("color", "blue");
+		  }
 		
 	})
 	
@@ -187,7 +185,7 @@ $(document).ready(function(){
 
             <div class="SignUp">
             <h1 class="signUpFormTitle">회원가입</h1>
-            <p id="join-us-text">함께 배우고, 함께 성장하는 스터디 커뮤니티</p>
+  
               <form:form  class="signUpForm" method="post" modelAttribute="mem" 
               action="signup">
                 <div class="signup-div">

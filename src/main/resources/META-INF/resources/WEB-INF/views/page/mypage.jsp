@@ -19,6 +19,8 @@
     flex-wrap: wrap; /* 요소가 넘칠 경우 줄바꿈 방지 */
     max-width: 1200px;
     margin: 0 auto;
+    
+		
  
 }
 
@@ -32,6 +34,7 @@
 
 .MyProfileContainer{
 	padding-top:30px;
+		border-left : 2px #e9e9e9 solid;
 }
       
       #MyprofileTitle{

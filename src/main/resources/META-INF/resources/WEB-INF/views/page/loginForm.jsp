@@ -11,7 +11,6 @@
       }
 
       .Login {
-  
         width: 33%;
         height: 70%;
         display: flex;

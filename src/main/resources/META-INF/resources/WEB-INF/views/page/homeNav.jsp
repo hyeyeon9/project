@@ -32,7 +32,7 @@
 	.home-nav-li{
 		padding : 8px 10px;
 		font-size : 17px;
-		font-weight :500;
+		font-weight :700;
 		border-radius:9px;
 		cursor: pointer;
 	    transition: all linear 0.1s;
@@ -40,16 +40,16 @@
 	
 
 	.home-nav-li:hover{
-		 background-color: antiquewhite;
+		background-color: rgba(252, 142, 142, 0.3);
 		 
 	}
 	
 	.home-nav-li.active a {
-    background-color: antiquewhite;
+  	  background-color: #f76f6f;
 	}
 	
     .home-nav-li.active {
-		 background-color: antiquewhite; 
+		 background-color: #f76f6f; 
 	}
 	
 	.home-nav-li:last-child{
