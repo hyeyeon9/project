@@ -4,13 +4,13 @@
     
     <!-- 댓글 추가 -->
     <insert id="CommentsAdd" parameterType="CommentsDTO">
-        insert into study_comments (comments, studyid, userid)
-        values ( #{comments}, #{studyid}, #{userid}) 
+        insert into study_comments (comments, studyid, userid, created_at)
+        values ( #{comments}, #{studyid}, #{userid}, now()) 
     </insert>
     
     <!-- 댓글 조회 (조인 사용) -->
     <select id="findAll" resultType="CommentsDTO" parameterType="int">
-        SELECT sc.commentsid, sc.comments, sc.created_at, sc.studyid, sc.userid, m.username
+        SELECT sc.commentsid, sc.comments,  sc.created_at AS createdAt, sc.studyid, sc.userid, m.username
         FROM study_comments sc
         JOIN member m ON sc.userid = m.userid
         WHERE sc.studyid = #{studyid}
@@ -28,5 +28,6 @@
         FROM study_comments 
         WHERE studyid = #{studyid}
     </select>
+    
 
 </mapper>

@@ -20,7 +20,7 @@ public class TimeUtil {
 			return minutes +"분 전";
 		}
 		long hours = minutes/60;
-		if(hours < 60) {
+		if(hours < 24) {
 			return hours +"시간 전";
 		}
 		long days = hours/24;

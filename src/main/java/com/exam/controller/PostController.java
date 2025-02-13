@@ -117,6 +117,7 @@ public class PostController {
 		 
 		    // ======= 추가된 부분: 댓글 목록과 댓글 개수 조회 =======
 		    List<CommentsDTO> comments = commentsService.findAll(studyid);
+		    
 		    m.addAttribute("comments", comments);
 		    m.addAttribute("commentCount", comments.size());
 		    // ====================================================

@@ -12,8 +12,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.CommentsDTO;
 import com.exam.dto.MemberDTO;
+import com.exam.dto.PostDTO;
 import com.exam.service.AuthenticationService;
 import com.exam.service.CommentsService;
+import com.exam.service.PostService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,12 +25,14 @@ public class CommentsController {
 	
 	CommentsService service;
 	AuthenticationService authService;
+	PostService postService;
 	
 
-	public CommentsController(CommentsService service, AuthenticationService authService) {
+	public CommentsController(CommentsService service, AuthenticationService authService, PostService postService) {
 		super();
 		this.service = service;
 		this.authService = authService;
+		this.postService = postService;
 	}
 
 
@@ -58,13 +62,16 @@ public class CommentsController {
 	    MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
 	    String userid = memberDTO.getUserid();
 	    String username = memberDTO.getUsername();  // username을 가져옵니다.
+	    
 
 	    // 댓글을 추가하기 위한 DTO 생성
 	    CommentsDTO dto = new CommentsDTO();
+	    
 	    dto.setStudyid(studyIdInt);
 	    dto.setComments(comments);
 	    dto.setUserid(userid);
 	    dto.setUsername(username);  // username도 DTO에 세팅
+	    
 
 	    // 댓글 추가 서비스 호출
 	    service.CommentsAdd(dto);
@@ -75,10 +82,6 @@ public class CommentsController {
 
 
 	
-	
-	
-
-    
     
 
     // 댓글 삭제

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <script>
 $(document).ready(function(){
     $("#cancelBtn").on("click",function(event){
@@ -14,6 +15,10 @@ $(document).ready(function(){
     }).on("blur", function() {
         $(this).parent().removeClass("focused");
     });
+    
+    
+    
+ 
 });
 </script>
 
@@ -152,7 +157,7 @@ input[type="text"]:focus {
 .comment {
     padding: 32px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius:10px;
+    border-radius:15px;
 }
 
 .comment:last-child {
@@ -162,7 +167,7 @@ input[type="text"]:focus {
 .comment-author {
     font-weight: 600;
     color: #495057;
-    margin-bottom: 8px;
+
 }
 
 .comment-content {
@@ -171,10 +176,11 @@ border :
     font-size: 1rem;
     margin-bottom: 12px;
     line-height: 1.6;
+    margin-top:5px;
 }
 
 .comment-timestamp {
-    font-size: 0.875rem;
+    font-size: 0.775rem;
     color: #868e96;
 }
 
@@ -220,6 +226,14 @@ border :
     background-color: #333;
 }
 
+.comment-box{
+	display : flex;
+	gap:12px;	
+	    border-bottom : 2px #d3d3d3 solid;
+	    align-items:flex-end;
+	        margin-bottom : 5px;
+}
+
 </style>
 
 <div class="container">
@@ -237,21 +251,32 @@ border :
         </form>
     </div>
 
+    <c:if test="${not empty comments}">
     <h3 id="comment-h3">댓글</h3>
-
+</c:if>
     <div class="comment-section">
         <c:forEach var="comment" items="${comments}">
             <div class="comment">
-                <div class="comment-author">${loginUserName}</div>
+				<div class="comment-box">
+				  <div class="comment-author">${comment.username}</div>
+              	  <div class="comment-timestamp">
+  					  <fmt:formatDate value="${comment.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" />
+					</div>
+				</div>
+				
                 <div class="comment-content">${comment.comments}</div>
-                <div class="comment-timestamp">${comment.created_at}</div>
                 <c:if test="${loginUserId eq comment.userid}">
                     <form action="deleteComment" method="post">
                         <input type="hidden" name="commentId" value="${comment.commentsid}" />
                         <input type="hidden" name="studyid" value="${post.studyid}" />
-                        <button type="submit" class="delete-btn">삭제</button>
+                        <button type="submit" class="delete-btn"> 🗑 </button>
                     </form>
                 </c:if>
+                
+
+                
+                
+                
             </div>
         </c:forEach>
     </div>
